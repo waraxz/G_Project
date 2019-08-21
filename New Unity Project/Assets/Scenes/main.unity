@@ -894,6 +894,7 @@ RectTransform:
   - {fileID: 1640797019}
   - {fileID: 1640215657}
   - {fileID: 1195826932}
+  - {fileID: 1756047943}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1345,20 +1346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314efd64816cd6c4d899ce8511219329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questNumber: 0
-  theQM: {fileID: 1640215658}
-  startText: 
-  endText: 
-  isItemQuest: 0
-  targetItem: 
-  isEnemyQuest: 0
-  targetEnemy: 
-  enemiesToKIll: 0
-  enemyKillCount: 0
 --- !u!224 &633077602
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1410,20 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314efd64816cd6c4d899ce8511219329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questNumber: 3
-  theQM: {fileID: 1640215658}
-  startText: Find the crystal
-  endText: You Got the Crystal
-  isItemQuest: 1
-  targetItem: Crystal
-  isEnemyQuest: 0
-  targetEnemy: 
-  enemiesToKIll: 0
-  enemyKillCount: 0
 --- !u!224 &752321984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1807,26 +1780,6 @@ PrefabInstance:
       propertyPath: Orientation
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5556927208408597313, guid: 3779c72a6e10a984ab2735c9d87b61c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7520305431306079931, guid: 3779c72a6e10a984ab2735c9d87b61c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835431406541766249, guid: 3779c72a6e10a984ab2735c9d87b61c3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835431406541766249, guid: 3779c72a6e10a984ab2735c9d87b61c3,
-        type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7846945162664007724, guid: 3779c72a6e10a984ab2735c9d87b61c3,
         type: 3}
       propertyPath: m_IsActive
@@ -1842,9 +1795,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5556927208408597313, guid: 3779c72a6e10a984ab2735c9d87b61c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2360311751694052556, guid: 3779c72a6e10a984ab2735c9d87b61c3,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520305431306079931, guid: 3779c72a6e10a984ab2735c9d87b61c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835431406541766249, guid: 3779c72a6e10a984ab2735c9d87b61c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835431406541766249, guid: 3779c72a6e10a984ab2735c9d87b61c3,
+        type: 3}
+      propertyPath: m_DynamicOccludee
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7820210404087181179, guid: 3779c72a6e10a984ab2735c9d87b61c3,
@@ -1885,20 +1858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314efd64816cd6c4d899ce8511219329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questNumber: 1
-  theQM: {fileID: 1640215658}
-  startText: Start the Quest!
-  endText: You did it!
-  isItemQuest: 0
-  targetItem: 
-  isEnemyQuest: 0
-  targetEnemy: 
-  enemiesToKIll: 0
-  enemyKillCount: 0
 --- !u!224 &944418504
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2581,20 +2540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314efd64816cd6c4d899ce8511219329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questNumber: 4
-  theQM: {fileID: 1640215658}
-  startText: Kill 3 Red Slimes
-  endText: Well Done!
-  isItemQuest: 0
-  targetItem: 
-  isEnemyQuest: 1
-  targetEnemy: RedSlime
-  enemiesToKIll: 3
-  enemyKillCount: 0
 --- !u!1001 &1332009152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2739,20 +2684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314efd64816cd6c4d899ce8511219329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questNumber: 2
-  theQM: {fileID: 1640215658}
-  startText: Go to Tent
-  endText: You Reach It.
-  isItemQuest: 0
-  targetItem: 
-  isEnemyQuest: 0
-  targetEnemy: 
-  enemiesToKIll: 0
-  enemyKillCount: 0
 --- !u!224 &1383833148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2922,20 +2853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1daf6bb9f72731344bf2206ee63866ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quests:
-  - {fileID: 633077601}
-  - {fileID: 944418503}
-  - {fileID: 1383833147}
-  - {fileID: 752321983}
-  - {fileID: 1331854092}
-  questCompleted: []
-  theDM: {fileID: 1640797018}
-  itemCollected: 
-  enemyKilled: 
 --- !u!1 &1640797017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,18 +2884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db19e0e0209417d42857ce0841ce6e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dBox: {fileID: 156310971}
-  dText: {fileID: 1089349636}
-  dialogActive: 0
-  dialogLines:
-  - Tes1
-  - Test2
-  - Test3
-  currentLine: 0
 --- !u!224 &1640797019
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3000,6 +2905,80 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: -126}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1756047942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1756047943}
+  - component: {fileID: 1756047945}
+  - component: {fileID: 1756047944}
+  m_Layer: 5
+  m_Name: InventoryMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1756047943
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756047942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 448098769}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 118, y: 5.4}
+  m_SizeDelta: {x: -447.8, y: -218.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1756047944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756047942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1756047945
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756047942}
+  m_CullTransparentMesh: 0
 --- !u!1 &1772626829
 GameObject:
   m_ObjectHideFlags: 0
