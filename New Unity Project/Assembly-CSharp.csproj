@@ -81,6 +81,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerStat.cs" />
     <Compile Include="Assets\Scripts\SwordDamage.cs" />
     <Compile Include="Assets\Scripts\UImanager.cs" />
+    <Compile Include="Assets\Tiled2Unity\Scripts\inventory\Consumable.cs" />
+    <Compile Include="Assets\Tiled2Unity\Scripts\inventory\item.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GPUInstancing.cs" />
