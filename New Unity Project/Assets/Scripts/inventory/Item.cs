@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class item : ScriptableObject
+public class Item : ScriptableObject
 {
     public string tk_itemName;
     public Sprite tk_icon;

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5b7110e1b072c43999281b7dbdc18d, type: 3}
+  m_Name: Kantana
+  m_EditorClassIdentifier: 
+  tk_itemName: Kantana
+  tk_icon: {fileID: 21300002, guid: 240def1d278760c4d8c4e60e00a1d82e, type: 3}
+  strBonus: 1
+  agiBonus: 0
+  intBonus: 0
+  vitBouns: 0
+  dexBouns: 5
+  luckBonus: 0
+  strPercentBonus: 0
+  agiPercentBonus: 0
+  intPercentBonus: 0
+  vitPercentBonus: 0
+  dexPercentBonus: 0
+  luckPercentBonus: 0
+  equipmentType: 5
