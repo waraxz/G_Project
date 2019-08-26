@@ -7,13 +7,26 @@ public class EquipmentPanel : MonoBehaviour
     [SerializeField] Transform equimentSlotParent;
     [SerializeField] Equipmentslot[] equipmentSlots;
 
-    public event Action<Item> onItemRightClickedEvent;
+    public event Action<ItemSlot> onPointerEnterEvent;
+    public event Action<ItemSlot> onPointerExitEvent;
+    public event Action<ItemSlot> onLeftClickEvent;
+    public event Action<ItemSlot> onBeginDragEvent;
+    public event Action<ItemSlot> onEndDragEvent;
+    public event Action<ItemSlot> onDragEvent;
+    public event Action<ItemSlot> onDropEvent;
 
-    private void Awake()
+    private void Start()
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            equipmentSlots[i].onRightClickEvent += onItemRightClickedEvent;
+            equipmentSlots[i].onPointerEnterEvent += onPointerEnterEvent;
+            equipmentSlots[i].onPointerExitEvent += onPointerExitEvent;
+            equipmentSlots[i].onLeftClickEvent += onLeftClickEvent;
+            equipmentSlots[i].onBeginDragEvent += onBeginDragEvent;
+            equipmentSlots[i].onEndDragEvent += onEndDragEvent;
+            equipmentSlots[i].onDragEvent += onDragEvent;
+            equipmentSlots[i].onDropEvent += onDropEvent;
+
 
         }
     }
@@ -43,11 +56,16 @@ public class EquipmentPanel : MonoBehaviour
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            if (equipmentSlots[i].item = item)
+            if(equipmentSlots[i].equipmentType == item.equipmentType)
             {
-                equipmentSlots[i].item = null;
-                return true;
+                if (equipmentSlots[i].item = item)
+                {
+
+                    equipmentSlots[i].item = null;
+                    return true;
+                }
             }
+          
 
         }
         return false;

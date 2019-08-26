@@ -6,19 +6,32 @@ using System;
 public class Inventory : MonoBehaviour
 {
 
-    [SerializeField] List<Item> items;
+    [SerializeField] List<Item> startingItems;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
 
-    public event Action<Item> onItemRightClickedEvent;
+    public event Action<ItemSlot> onPointerEnterEvent;
+    public event Action<ItemSlot> onPointerExitEvent;
+    public event Action<ItemSlot> onLeftClickEvent;
+    public event Action<ItemSlot> onBeginDragEvent;
+    public event Action<ItemSlot> onEndDragEvent;
+    public event Action<ItemSlot> onDragEvent;
+    public event Action<ItemSlot> onDropEvent;
 
-    private void Awake()
+    private void Start()
     {
         for(int i = 0;i < itemSlots.Length; i++)
         {
-            itemSlots[i].onRightClickEvent += onItemRightClickedEvent;
-            
+            itemSlots[i].onPointerEnterEvent += onPointerEnterEvent;
+            itemSlots[i].onPointerExitEvent += onPointerExitEvent;
+            itemSlots[i].onLeftClickEvent += onLeftClickEvent;
+            itemSlots[i].onBeginDragEvent += onBeginDragEvent;
+            itemSlots[i].onEndDragEvent += onEndDragEvent;
+            itemSlots[i].onDragEvent += onDragEvent;
+            itemSlots[i].onDropEvent += onDropEvent;
+
         }
+        SetStartingItems();
     }
 
     private void OnValidate()
@@ -27,15 +40,15 @@ public class Inventory : MonoBehaviour
         {
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
         }
-        RefeshUI();
+        SetStartingItems();
     }
 
-    private void RefeshUI()
+    private void SetStartingItems()
     {
         int i = 0;
-        for(; i < items.Count && i < itemSlots.Length; i++)
+        for(; i < startingItems.Count && i < itemSlots.Length; i++)
         {
-            itemSlots[i].item  = items[i];
+            itemSlots[i].item  = startingItems[i];
         }
         for (; i < itemSlots.Length; i++)
         {
@@ -45,24 +58,39 @@ public class Inventory : MonoBehaviour
     }
     public bool AddItem(Item item)
     {
-        if (IsFull()) return false;
-
-        items.Add(item);
-        RefeshUI();
-        return true;
+       for(int i = 0; i< itemSlots.Length; i++)
+        {
+            if(itemSlots[i].item == null)
+            {
+                itemSlots[i].item = item;
+                return true;
+            }
+        }
+        return false;
     }
     public bool RemoveItem(Item item)
     {
-        if (items.Remove(item))
+        for (int i = 0; i < itemSlots.Length; i++)
         {
-            RefeshUI();
-            return true;
+            if (itemSlots[i].item == item)
+            {
+                itemSlots[i].item = null;
+                return true;
+            }
         }
         return false;
     }
     public bool IsFull()
     {
-        return items.Count >= itemSlots.Length;
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            if (itemSlots[i].item == null)
+            {
+                
+                return false;
+            }
+        }
+        return true;
     }
 
 
