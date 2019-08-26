@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,  IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,  IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] Image image;
     [SerializeField] Text text;
@@ -43,7 +43,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             }
         }
     }
-   
 
 
     protected virtual void OnValidate()

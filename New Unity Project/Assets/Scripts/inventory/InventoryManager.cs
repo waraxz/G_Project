@@ -8,15 +8,18 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] EquipmentPanel equipmentPanel;
 
     [SerializeField] Image draggableItem;
+    [SerializeField] Text draggableText;
 
-    private ItemSlot dragItemSlot;
+    private ItemSlot draggedSlot;
+
+
 
     private void Awake()
     {
         //คลิก equip item ใน inventory ไปยัง equipment Panel
-           inventory.onLeftClickEvent += InventoryRightClick;
+           inventory.onLeftClickEvent += Equip;
         // คลิกขวาเพื่อถอดอาวุธออก
-           equipmentPanel.onLeftClickEvent += EquipmentPanelLeftClick;
+           equipmentPanel.onLeftClickEvent += Unequip;
 
         //อยากให้ทำอะไร ตอนเม้าส์ชี้
         // inventory.onPointerEnterEvent += function ที่ต้องการ
@@ -39,11 +42,12 @@ public class InventoryManager : MonoBehaviour
         //dropItemArea.OnDropEvent += DropItemOutsideUI;
     }
 
-    private void InventoryRightClick(ItemSlot itemSlot)
+    private void Equip(ItemSlot itemSlot)
     {
-        if (itemSlot.item is Equippable)
+        Equippable equippable = itemSlot.item as Equippable;
+        if (equippable != null)
         {
-            Equip((Equippable)itemSlot.item);
+            Equip(equippable);
         }
         //else if (itemslot.item is usableitem)
         //{
@@ -58,6 +62,15 @@ public class InventoryManager : MonoBehaviour
         //}
     }
 
+    private void Unequip(ItemSlot itemSlot)
+    {
+        Equippable equippable = itemSlot.item as Equippable;
+        if (equippable != null)
+        {
+            Unequip(equippable);
+        }
+    }
+
     private void EquipmentPanelLeftClick(ItemSlot itemSlot)
     {
         if (itemSlot.item is Equippable)
@@ -68,57 +81,45 @@ public class InventoryManager : MonoBehaviour
 
   
 
-    private void EquipFromInventory(Item item)
-    {
-        if(item is Equippable)
-        {
-            Equip((Equippable)item);
-        }
-    }
-    private void UnEquiqFromEquipPanel(Item item)
-    {
-        if(item is Equippable)
-        {
-            Unequip((Equippable)item);
-            
-        }
-    }
 
     private void BeginDrag(ItemSlot itemSlot)
     {
         if (itemSlot.item != null)
         {
-            dragItemSlot = itemSlot;
+            
+            draggedSlot = itemSlot;
             draggableItem.sprite = itemSlot.item.tk_icon;
+            draggableText.text = itemSlot.item.tk_itemName;
             draggableItem.transform.position = Input.mousePosition;
-            draggableItem.gameObject.SetActive(true);
+            draggableText.enabled = true;
+            draggableItem.enabled = true;
+            
         }
     }
 
     private void Drag(ItemSlot itemSlot)
     {
+        if(draggableItem.enabled)
         draggableItem.transform.position = Input.mousePosition;
     }
 
     private void EndDrag(ItemSlot itemSlot)
     {
-        dragItemSlot = null;
-        draggableItem.gameObject.SetActive(false);
+        draggedSlot = null;
+        draggableItem.enabled = false;
+        draggableText.enabled = false;
     }
 
     private void Drop(ItemSlot dropItemSlot)
     {
-         if (dragItemSlot == null) return;
 
-         if(dropItemSlot.CanReceiveItem(dragItemSlot.item) && dragItemSlot.CanReceiveItem(dropItemSlot.item))
+        if (dropItemSlot.CanReceiveItem(draggedSlot.item) && draggedSlot.CanReceiveItem(dropItemSlot.item))
         {
-            Equippable dragItem = dragItemSlot.item as Equippable;
-            Equippable dropItem = dropItemSlot.item as Equippable;
+            Item draggedItem = draggedSlot.item;
+            draggedSlot.item = dropItemSlot.item;
+            dropItemSlot.item = draggedItem;
 
-            if(dragItemSlot is Equipmentslot)
-            {
 
-            }
         }
 
         //    if (dropItemSlot.CanAddStack(dragItemSlot.Item))
@@ -141,6 +142,7 @@ public class InventoryManager : MonoBehaviour
                 if(previousItem != null)
                 {
                     inventory.AddItem(previousItem);
+   
                 }
             }
             else
@@ -155,7 +157,7 @@ public class InventoryManager : MonoBehaviour
         if(!inventory.IsFull()&& equipmentPanel.RemoveItem(item))
         {
             // เพิ่มไอเท็มกลับเข้าไปยัง inventory
-
+            inventory.AddItem(item);
         
         }
     }

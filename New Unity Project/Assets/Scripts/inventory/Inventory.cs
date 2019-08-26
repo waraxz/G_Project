@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class Inventory : MonoBehaviour
 {
-
     [SerializeField] List<Item> startingItems;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
