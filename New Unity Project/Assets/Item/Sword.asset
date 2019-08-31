@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5b7110e1b072c43999281b7dbdc18d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  tk_itemName: sword
-  tk_icon: {fileID: 21300000, guid: 240def1d278760c4d8c4e60e00a1d82e, type: 3}
+  itemName: Sword
+  icon: {fileID: 21300000, guid: 240def1d278760c4d8c4e60e00a1d82e, type: 3}
+  MaxStacks: 1
   strBonus: 3
   agiBonus: 0
   intBonus: 0

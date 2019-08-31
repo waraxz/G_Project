@@ -33,5 +33,14 @@ public class Equippable : Item
     public float luckPercentBonus;
     [Space]
     public EquipmentType equipmentType;
-    
+
+    public override Item GetCopy()
+    {
+        return Instantiate(this);
+    }
+    public override void Destroy()
+    {
+        Destroy(this);   
+    }
 }
+

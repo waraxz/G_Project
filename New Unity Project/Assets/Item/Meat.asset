@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4529198978444b47a748c21fc242e6d, type: 3}
   m_Name: Meat
   m_EditorClassIdentifier: 
-  tk_itemName: meat
-  tk_icon: {fileID: 21301756, guid: fc4c315b7b5e3df4cbd1639da2ec3e4c, type: 3}
+  id: 3071b174ca023b84e81c78d57069caec
+  itemName: meat
+  icon: {fileID: 21301756, guid: fc4c315b7b5e3df4cbd1639da2ec3e4c, type: 3}
+  MaxStacks: 99
+  IsConsumable: 1
+  Effects: []

@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\pickUp.cs" />
     <Compile Include="Assets\Scripts\Audio\MusicController.cs" />
     <Compile Include="Assets\Scripts\Audio\MusicSwitcher.cs" />
     <Compile Include="Assets\Scripts\Audio\SFXManager.cs" />
@@ -69,15 +70,21 @@
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
     <Compile Include="Assets\Scripts\FloatingNumber.cs" />
-    <Compile Include="Assets\Scripts\inventory\EquipmentPanel.cs" />
-    <Compile Include="Assets\Scripts\inventory\Equipmentslot.cs" />
-    <Compile Include="Assets\Scripts\inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\inventory\DropItemArea.cs" />
     <Compile Include="Assets\Scripts\inventory\InventoryInput.cs" />
-    <Compile Include="Assets\Scripts\inventory\InventoryManager.cs" />
-    <Compile Include="Assets\Scripts\inventory\Item.cs" />
-    <Compile Include="Assets\Scripts\inventory\Item\Consumable.cs" />
     <Compile Include="Assets\Scripts\inventory\Item\Equippable.cs" />
-    <Compile Include="Assets\Scripts\inventory\ItemSlot.cs" />
+    <Compile Include="Assets\Scripts\inventory\Item\HealItemEffect.cs" />
+    <Compile Include="Assets\Scripts\inventory\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\inventory\Item\UsableItem.cs" />
+    <Compile Include="Assets\Scripts\inventory\Item\UsableItemEffect.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\BaseItemSlot.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\EquipmentPanel.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\EquipmentSlot.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\IIcontainer.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\Inventory.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\InventoryManager.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\ItemContainer.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\LoadNewArea.cs" />
     <Compile Include="Assets\Scripts\Monster\EnemyHealthManager.cs" />
     <Compile Include="Assets\Scripts\Monster\HurtPlayer.cs" />
