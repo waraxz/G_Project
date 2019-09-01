@@ -59,9 +59,10 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         {
             if (ItemSlots[i].CanAddStack(item))
             {
-                ItemSlots[i].Item = item;
-                ItemSlots[i].Amount++;
+                ItemSlots[i].Item = item;             
+                ItemSlots[i].Amount++;               
                 return true;
+
             }
         }
 
@@ -69,9 +70,13 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         {
             if (ItemSlots[i].Item == null)
             {
-                ItemSlots[i].Item = item;
-                ItemSlots[i].Amount++;
-                return true;
+                if (item.ID == item.ID)
+                {
+                    ItemSlots[i].Item = item;
+                    ItemSlots[i].Amount++;
+                    return true;
+                }
+                
             }
         }
         return false;

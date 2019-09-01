@@ -69,7 +69,8 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     public virtual bool CanAddStack(Item item, int amount = 1)
     {
-        return Item != null && item.ID == item.ID;
+        
+        return Item != null && Item.ID == item.ID;
     }
 
     public virtual bool CanReceiveItem(Item item)

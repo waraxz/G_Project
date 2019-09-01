@@ -15,15 +15,8 @@ public class Item : ScriptableObject
     public int MaxStacks = 1;
     public bool IsConsumable;
 
-    protected static readonly StringBuilder sb = new StringBuilder();
 
-#if UNITY_EDITOR
-    protected virtual void OnValidate()
-    {
-        string path = AssetDatabase.GetAssetPath(this);
-        id = AssetDatabase.AssetPathToGUID(path);
-    }
-#endif
+
 
     public virtual Item GetCopy()
     {

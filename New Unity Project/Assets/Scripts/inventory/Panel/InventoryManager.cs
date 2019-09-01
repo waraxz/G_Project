@@ -164,7 +164,7 @@ public class InventoryManager : MonoBehaviour
 
     private void DestroyItemInSlot(BaseItemSlot itemSlot)
     {
-        // If the item is equiped, unequip first
+        
         if (itemSlot is EquipmentSlot)
         {
             Equippable equippableItem = (Equippable)itemSlot.Item;

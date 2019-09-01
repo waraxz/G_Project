@@ -17,7 +17,10 @@ public class ItemSlot : BaseItemSlot, IBeginDragHandler, IEndDragHandler, IDragH
 
     public override bool CanAddStack(Item item, int amount = 1)
     {
-        return base.CanAddStack(item, amount) && Amount + amount <= item.MaxStacks;
+       
+            return base.CanAddStack(item, amount) && Amount + amount <= item.MaxStacks; 
+
+        
     }
 
     public override bool CanReceiveItem(Item item)

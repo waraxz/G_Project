@@ -11014,7 +11014,7 @@ GameObject:
   - component: {fileID: 910191564}
   m_Layer: 0
   m_Name: Meat (3)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11136,7 +11136,7 @@ GameObject:
   - component: {fileID: 912703582}
   m_Layer: 0
   m_Name: Meat (2)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15060,7 +15060,7 @@ GameObject:
   - component: {fileID: 1217943013}
   m_Layer: 0
   m_Name: Meat (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18074,7 +18074,7 @@ GameObject:
   - component: {fileID: 1434823273}
   m_Layer: 0
   m_Name: sword (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18778,7 +18778,7 @@ GameObject:
   - component: {fileID: 1520170895}
   m_Layer: 0
   m_Name: katana
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19679,7 +19679,7 @@ GameObject:
   - component: {fileID: 1604119052}
   m_Layer: 0
   m_Name: sword
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22779,7 +22779,7 @@ GameObject:
   - component: {fileID: 1859738885}
   m_Layer: 0
   m_Name: Meat (4)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

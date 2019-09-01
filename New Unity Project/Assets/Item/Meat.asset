@@ -17,4 +17,5 @@ MonoBehaviour:
   icon: {fileID: 21301756, guid: fc4c315b7b5e3df4cbd1639da2ec3e4c, type: 3}
   MaxStacks: 99
   IsConsumable: 1
-  Effects: []
+  Effects:
+  - {fileID: 11400000, guid: db1ec0ce4486b374c9f32e6b281bfa95, type: 2}
