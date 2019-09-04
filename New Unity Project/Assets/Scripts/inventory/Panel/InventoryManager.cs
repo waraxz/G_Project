@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
 
     private BaseItemSlot dragItemSlot;
 
+    public PlayerHealthManager playerHP;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class InventoryManager : MonoBehaviour
 
         // Setup Events:
         // Right Click
-        Inventory.OnRightClickEvent += InventoryRightClick;
+        Inventory.OnRightClickEvent += RightClickorPresstoUse;
         EquipmentPanel.OnRightClickEvent += EquipmentPanelRightClick;
         // Pointer Enter
 
@@ -64,7 +65,7 @@ public class InventoryManager : MonoBehaviour
         //}
     }
 
-    private void InventoryRightClick(BaseItemSlot itemSlot)
+    public void RightClickorPresstoUse(BaseItemSlot itemSlot)
     {
         if (itemSlot.Item is Equippable)
         {
@@ -73,6 +74,7 @@ public class InventoryManager : MonoBehaviour
         else if (itemSlot.Item is UsableItem)
         {
             UsableItem usableItem = (UsableItem)itemSlot.Item;
+            usableItem.Use(playerHP);
 
             if (usableItem.IsConsumable)
             {
@@ -230,7 +232,7 @@ public class InventoryManager : MonoBehaviour
     {
         openItemContainer = itemContainer;
 
-        Inventory.OnRightClickEvent -= InventoryRightClick;
+        Inventory.OnRightClickEvent -= RightClickorPresstoUse;
         Inventory.OnRightClickEvent += TransferToItemContainer;
 
         itemContainer.OnRightClickEvent += TransferToInventory;
@@ -246,7 +248,7 @@ public class InventoryManager : MonoBehaviour
     {
         openItemContainer = null;
 
-        Inventory.OnRightClickEvent += InventoryRightClick;
+        Inventory.OnRightClickEvent += RightClickorPresstoUse;
         Inventory.OnRightClickEvent -= TransferToItemContainer;
 
         itemContainer.OnRightClickEvent -= TransferToInventory;

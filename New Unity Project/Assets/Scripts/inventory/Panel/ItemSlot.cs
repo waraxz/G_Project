@@ -12,6 +12,7 @@ public class ItemSlot : BaseItemSlot, IBeginDragHandler, IEndDragHandler, IDragH
     public event Action<BaseItemSlot> OnDragEvent;
     public event Action<BaseItemSlot> OnDropEvent;
 
+    public KeyCode keyCode;
     private bool isDragging;
     private Color dragColor = new Color(1, 1, 1, 0.5f);
 

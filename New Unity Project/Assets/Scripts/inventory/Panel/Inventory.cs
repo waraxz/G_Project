@@ -5,6 +5,7 @@ public class Inventory : ItemContainer
     [SerializeField] protected Item[] startingItems;
     [SerializeField] protected Transform itemsParent;
 
+    public InventoryManager invManager;
     protected override void OnValidate()
     {
         if (itemsParent != null)
@@ -29,5 +30,13 @@ public class Inventory : ItemContainer
         {    
             AddItem(item.GetCopy());
         }
+    }
+    private void Update()
+    {
+        for (int i = 0; i < ItemSlots.Count; i++)
+            if (Input.GetKeyUp(ItemSlots[i].keyCode))
+            {
+                invManager.RightClickorPresstoUse(ItemSlots[i]);
+            }
     }
 }

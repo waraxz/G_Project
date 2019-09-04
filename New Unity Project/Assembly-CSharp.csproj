@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\inventory\Panel\BaseItemSlot.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\EquipmentPanel.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\EquipmentSlot.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\HotBarPanel.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\IIcontainer.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\Inventory.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\InventoryManager.cs" />
