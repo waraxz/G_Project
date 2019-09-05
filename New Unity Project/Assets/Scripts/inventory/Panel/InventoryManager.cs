@@ -54,6 +54,8 @@ public class InventoryManager : MonoBehaviour
         //    itemSaveManager.LoadEquipment(this);
         //    itemSaveManager.LoadInventory(this);
         //}
+
+        
     }
 
     private void OnDestroy()
@@ -259,6 +261,7 @@ public class InventoryManager : MonoBehaviour
         itemContainer.OnDragEvent -= Drag;
         itemContainer.OnDropEvent -= Drop;
     }
+
 
 
 }

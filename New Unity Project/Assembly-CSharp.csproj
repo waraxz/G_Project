@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\inventory\Panel\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\ItemContainer.cs" />
     <Compile Include="Assets\Scripts\inventory\Panel\ItemSlot.cs" />
+    <Compile Include="Assets\Scripts\inventory\Panel\KeyPanel.cs" />
     <Compile Include="Assets\Scripts\inventory\pickUp.cs" />
     <Compile Include="Assets\Scripts\LoadNewArea.cs" />
     <Compile Include="Assets\Scripts\Monster\EnemyHealthManager.cs" />

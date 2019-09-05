@@ -21,13 +21,21 @@ public class Inventory : ItemContainer
     {
         base.Awake();
         SetStartingItems();
+            
     }
+    private void Start()
+    {
 
+       
+
+    }
+    // ใส่ไอเท็มตอนเริ่มต้นเล่นเกมส์ ใน hierarchy
     private void SetStartingItems()
     {
         Clear();
         foreach (Item item in startingItems)
         {    
+          //ใส่ไอเท็มลงไป
             AddItem(item.GetCopy());
         }
     }
