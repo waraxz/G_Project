@@ -9,6 +9,11 @@ public class KeyPanel : MonoBehaviour
     public GameObject key, key1, key2, key3, key4,key5;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         key.gameObject.SetActive(false);
@@ -20,8 +25,9 @@ public class KeyPanel : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        
         QuestKey();
         UseKey();
         

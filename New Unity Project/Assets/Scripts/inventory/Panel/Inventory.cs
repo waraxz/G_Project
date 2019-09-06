@@ -17,18 +17,13 @@ public class Inventory : ItemContainer
         }
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-        SetStartingItems();
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //    SetStartingItems();
             
-    }
-    private void Start()
-    {
+    //}
 
-       
-
-    }
     // ใส่ไอเท็มตอนเริ่มต้นเล่นเกมส์ ใน hierarchy
     private void SetStartingItems()
     {

@@ -6,6 +6,8 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 {
     public List<ItemSlot> ItemSlots;
 
+    public int unlockSlot = 1;
+
     public event Action<BaseItemSlot> OnPointerEnterEvent;
     public event Action<BaseItemSlot> OnPointerExitEvent;
     public event Action<BaseItemSlot> OnRightClickEvent;
@@ -17,12 +19,25 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     protected virtual void OnValidate()
     {
         GetComponentsInChildren(includeInactive: true, result: ItemSlots);
+
     }
-
-
-    protected virtual void Awake()
+ 
+    protected virtual void Start()
     {
-        for (int i = 0; i < ItemSlots.Count; i++)
+        for (int i = 0; i < ItemSlots.Count/5; i++)
+        {
+            ItemSlots[i].OnPointerEnterEvent += slot => EventHelper(slot, OnPointerEnterEvent);
+            ItemSlots[i].OnPointerExitEvent += slot => EventHelper(slot, OnPointerExitEvent);
+            ItemSlots[i].OnRightClickEvent += slot => EventHelper(slot, OnRightClickEvent);
+            ItemSlots[i].OnBeginDragEvent += slot => EventHelper(slot, OnBeginDragEvent);
+            ItemSlots[i].OnEndDragEvent += slot => EventHelper(slot, OnEndDragEvent);
+            ItemSlots[i].OnDragEvent += slot => EventHelper(slot, OnDragEvent);
+            ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);
+        }
+    }
+    protected virtual void FixedUpdate()
+    {
+        for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
         {
             ItemSlots[i].OnPointerEnterEvent += slot => EventHelper(slot, OnPointerEnterEvent);
             ItemSlots[i].OnPointerExitEvent += slot => EventHelper(slot, OnPointerExitEvent);
@@ -137,4 +152,8 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
             ItemSlots[i].Amount = 0;
         }
     }
+
+   
+
+   
 }

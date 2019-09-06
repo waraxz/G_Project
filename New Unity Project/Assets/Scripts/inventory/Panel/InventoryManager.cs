@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        
+
 
         // Setup Events:
         // Right Click
@@ -28,10 +28,10 @@ public class InventoryManager : MonoBehaviour
         EquipmentPanel.OnRightClickEvent += EquipmentPanelRightClick;
         // Pointer Enter
 
-       
+
         // Pointer Exit
 
-      
+
         // Begin Drag
         Inventory.OnBeginDragEvent += BeginDrag;
         EquipmentPanel.OnBeginDragEvent += BeginDrag;
@@ -55,7 +55,7 @@ public class InventoryManager : MonoBehaviour
         //    itemSaveManager.LoadInventory(this);
         //}
 
-        
+
     }
 
     private void OnDestroy()
@@ -133,7 +133,7 @@ public class InventoryManager : MonoBehaviour
 
     private void AddStacks(BaseItemSlot dropItemSlot)
     {
-        
+
         int numAddableStacks = dropItemSlot.Item.MaxStacks - dropItemSlot.Amount;
         int stacksToAdd = Mathf.Min(numAddableStacks, dragItemSlot.Amount);
 
@@ -145,7 +145,7 @@ public class InventoryManager : MonoBehaviour
     {
         Equippable dragEquipItem = dragItemSlot.Item as Equippable;
         Equippable dropEquipItem = dropItemSlot.Item as Equippable;
-   
+
 
         Item draggedItem = dragItemSlot.Item;
         int draggedItemAmount = dragItemSlot.Amount;
@@ -161,14 +161,14 @@ public class InventoryManager : MonoBehaviour
     {
         if (dragItemSlot == null) return;
 
-       
+
         BaseItemSlot slot = dragItemSlot;
-       
+
     }
 
     private void DestroyItemInSlot(BaseItemSlot itemSlot)
     {
-        
+
         if (itemSlot is EquipmentSlot)
         {
             Equippable equippableItem = (Equippable)itemSlot.Item;
@@ -188,8 +188,8 @@ public class InventoryManager : MonoBehaviour
             {
                 if (previousItem != null)
                 {
-                    Inventory.AddItem(previousItem);                    
-                }               
+                    Inventory.AddItem(previousItem);
+                }
             }
             else
             {
@@ -202,8 +202,8 @@ public class InventoryManager : MonoBehaviour
     {
         if (Inventory.CanAddItem(item) && EquipmentPanel.RemoveItem(item))
         {
-     
-           
+
+
             Inventory.AddItem(item);
         }
     }
@@ -262,6 +262,17 @@ public class InventoryManager : MonoBehaviour
         itemContainer.OnDropEvent -= Drop;
     }
 
+    private void FixedUpdate()
+    {
 
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            if (Inventory.unlockSlot < 6)
+            {
+                Inventory.unlockSlot++;
+                Debug.Log(Inventory.ItemSlots.Count / 5 * Inventory.unlockSlot);
+            }
+        }
+    }
 
 }
