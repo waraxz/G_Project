@@ -7,6 +7,14 @@ public class InventoryInput : MonoBehaviour
     [SerializeField] KeyCode[] toggleInventoryKeys;
     [SerializeField] bool showAndHideMouse = true;
 
+    public PlayerController player;
+
+    private void Start()
+    {
+        shortCutPanelObject.SetActive(true);
+        inventoryPanelObject.SetActive(false);
+        ShowMouseCursor();
+    }
     void Update()
     {
 
@@ -22,18 +30,22 @@ public class InventoryInput : MonoBehaviour
             {
                 if (shortCutPanelObject.activeSelf)
                 {
+                   
                     shortCutPanelObject.SetActive(false);
-                    inventoryPanelObject.SetActive(true);
+                    inventoryPanelObject.SetActive(true);                   
                     ShowMouseCursor();
+                    player.gameObject.SetActive(false);
                 }
                 else
                 {
                     inventoryPanelObject.SetActive(false);
                     shortCutPanelObject.SetActive(true);
-                    HideMouseCursor();
+                    ShowMouseCursor();
+                    player.gameObject.SetActive(true);
                 }
         
             }
+         
         }
     }
 

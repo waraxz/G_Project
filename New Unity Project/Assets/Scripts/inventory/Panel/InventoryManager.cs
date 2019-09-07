@@ -42,18 +42,22 @@ public class InventoryManager : MonoBehaviour
         // Drop
         Inventory.OnDropEvent += Drop;
         EquipmentPanel.OnDropEvent += Drop;
-        //dropItemArea.OnDropEvent += DropItemOutsideUI;
+        dropItemArea.OnDropEvent += DropItemOutsideUI;
     }
 
     // TKคลิกขวาหรือกด 1-= เพื่อใช้ไอเท็ม
     public void RightClickorPresstoUse(BaseItemSlot itemSlot)
     {
+        //สำหรับ item อาวุธ
         if (itemSlot.Item is Equippable)
         {
+
             Equip((Equippable)itemSlot.Item);
         }
+        //สำหรับ item ใช้แล้วหาย
         else if (itemSlot.Item is UsableItem)
         {
+           
             UsableItem usableItem = (UsableItem)itemSlot.Item;
             usableItem.Use(playerHP);
             // ถ้าไอเท็ม usableใช้งาน
@@ -65,6 +69,7 @@ public class InventoryManager : MonoBehaviour
                 usableItem.Destroy();
             }
         }
+        // ไอเท็มอื่นเพิ่มเข้าแล้วจะทำอะไรก็ทำ
     }
     // คลิกขวาใน slot ช่อง equip
     private void EquipmentPanelRightClick(BaseItemSlot itemSlot)
@@ -75,7 +80,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-
+    //เริ่มคลิกเม้าส์เพื่อ....
     private void BeginDrag(BaseItemSlot itemSlot)
     {
         if (itemSlot.Item != null)
@@ -86,18 +91,18 @@ public class InventoryManager : MonoBehaviour
             draggableItem.gameObject.SetActive(true);
         }
     }
-
+    //เริ่มคลิกและลากเม้าส์เพื่อ....
     private void Drag(BaseItemSlot itemSlot)
     {
         draggableItem.transform.position = Input.mousePosition;
     }
-
+    //เริ่มปล่อยเม้าส์เพื่อ...
     private void EndDrag(BaseItemSlot itemSlot)
     {
         dragItemSlot = null;
         draggableItem.gameObject.SetActive(false);
     }
-
+    //หากมีอะไรดรอป
     private void Drop(BaseItemSlot dropItemSlot)
     {
         if (dragItemSlot == null) return;
@@ -111,7 +116,7 @@ public class InventoryManager : MonoBehaviour
             SwapItems(dropItemSlot);
         }
     }
-
+    //เพิ่มจำนวนในสล็อตเดียวกัน
     private void AddStacks(BaseItemSlot dropItemSlot)
     {
 
@@ -121,7 +126,7 @@ public class InventoryManager : MonoBehaviour
         dropItemSlot.Amount += stacksToAdd;
         dragItemSlot.Amount -= stacksToAdd;
     }
-
+    //เมื่อ slot นั้นมีไอเท็มและเราต้องการสลับไอเท็ม
     private void SwapItems(BaseItemSlot dropItemSlot)
     {
         Equippable dragEquipItem = dragItemSlot.Item as Equippable;
@@ -143,7 +148,8 @@ public class InventoryManager : MonoBehaviour
         if (dragItemSlot == null) return;
 
 
-        BaseItemSlot slot = dragItemSlot;
+        dragItemSlot.Item.Destroy();
+        dragItemSlot.Item = null;
 
     }
 

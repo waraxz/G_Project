@@ -7,7 +7,6 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     public List<ItemSlot> ItemSlots;
 
     public int unlockSlot = 1;
-    public Item item;
 
     public event Action<BaseItemSlot> OnPointerEnterEvent;
     public event Action<BaseItemSlot> OnPointerExitEvent;
@@ -20,10 +19,10 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     protected virtual void OnValidate()
     {
         GetComponentsInChildren(includeInactive: true, result: ItemSlots);
-
+        
     }
- 
-    
+
+
     protected virtual void Awake()
     {
         for (int i = 0; i < ItemSlots.Count; i++)
@@ -35,12 +34,15 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
             ItemSlots[i].OnEndDragEvent += slot => EventHelper(slot, OnEndDragEvent);
             ItemSlots[i].OnDragEvent += slot => EventHelper(slot, OnDragEvent);
             
+
         }
         for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
         {
             ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);
         }
+
     }
+
     protected virtual void FixedUpdate()
     {
         for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
@@ -71,12 +73,12 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 
     public virtual bool AddItem(Item item)
     {
-        for (int i = 0; i < ItemSlots.Count/5 * unlockSlot; i++)
+        for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
         {
             if (ItemSlots[i].CanAddStack(item))
             {
-                ItemSlots[i].Item = item;             
-                ItemSlots[i].Amount++;               
+                ItemSlots[i].Item = item;
+                ItemSlots[i].Amount++;
                 return true;
 
             }
@@ -92,7 +94,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
                     ItemSlots[i].Amount++;
                     return true;
                 }
-                
+
             }
         }
         return false;
@@ -153,7 +155,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         }
     }
 
-   
 
-   
+
+
 }
