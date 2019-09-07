@@ -6,15 +6,31 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 {
     public List<ItemSlot> ItemSlots;
 
-    public int unlockSlot = 1;
+    private int unlockSlot = 1;
+    public int UnlockSlot
+    {
+        get
+        {
+            return unlockSlot;
+        }
+        // you can additionally make the setter private so only this class
+        // can change the value while other classes have only read permissions
+        /*private*/
+        set
+        {
+            unlockSlot = value;
 
-    public event Action<BaseItemSlot> OnPointerEnterEvent;
-    public event Action<BaseItemSlot> OnPointerExitEvent;
-    public event Action<BaseItemSlot> OnRightClickEvent;
-    public event Action<BaseItemSlot> OnBeginDragEvent;
-    public event Action<BaseItemSlot> OnEndDragEvent;
-    public event Action<BaseItemSlot> OnDragEvent;
-    public event Action<BaseItemSlot> OnDropEvent;
+            UpdateItemSlots();
+        }
+    }
+
+    public event Action<BaseItemSlot> OnPointerEnterEvent = slot => { };
+    public event Action<BaseItemSlot> OnPointerExitEvent = slot => { };
+    public event Action<BaseItemSlot> OnRightClickEvent = slot => { };
+    public event Action<BaseItemSlot> OnBeginDragEvent = slot => { };
+    public event Action<BaseItemSlot> OnEndDragEvent = slot => { };
+    public event Action<BaseItemSlot> OnDragEvent = slot => { };
+    public event Action<BaseItemSlot> OnDropEvent = slot => { };
 
     protected virtual void OnValidate()
     {
@@ -23,39 +39,51 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     }
 
 
-    protected virtual void Awake()
+    private void UpdateItemSlots()
     {
-        for (int i = 0; i < ItemSlots.Count; i++)
+        for (var i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
         {
-            ItemSlots[i].OnPointerEnterEvent += slot => EventHelper(slot, OnPointerEnterEvent);
-            ItemSlots[i].OnPointerExitEvent += slot => EventHelper(slot, OnPointerExitEvent);
-            ItemSlots[i].OnRightClickEvent += slot => EventHelper(slot, OnRightClickEvent);
-            ItemSlots[i].OnBeginDragEvent += slot => EventHelper(slot, OnBeginDragEvent);
-            ItemSlots[i].OnEndDragEvent += slot => EventHelper(slot, OnEndDragEvent);
-            ItemSlots[i].OnDragEvent += slot => EventHelper(slot, OnDragEvent);
-            
+            // Before adding callbacks remove them
+            // this is valid even if they were not added before
+            // but makes sure they are added only exactly once
+            ItemSlots[i].OnPointerEnterEvent -= OnPointerEnterEvent;
+            ItemSlots[i].OnPointerExitEvent -= OnPointerExitEvent;
+            ItemSlots[i].OnRightClickEvent -= OnRightClickEvent;
+            ItemSlots[i].OnBeginDragEvent -= OnBeginDragEvent;
+            ItemSlots[i].OnEndDragEvent -= OnEndDragEvent;
+            ItemSlots[i].OnDragEvent -= OnDragEvent;
+            ItemSlots[i].OnDropEvent -= OnDropEvent;
 
-        }
-        for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
-        {
-            ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);
-        }
-
-    }
-
-    protected virtual void FixedUpdate()
-    {
-        for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
-        {
-            ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);
+            // add your callback events .. no need for this complex lambda construct
+            ItemSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
+            ItemSlots[i].OnPointerExitEvent += OnPointerExitEvent;
+            ItemSlots[i].OnRightClickEvent += OnRightClickEvent;
+            ItemSlots[i].OnBeginDragEvent += OnBeginDragEvent;
+            ItemSlots[i].OnEndDragEvent += OnEndDragEvent;
+            ItemSlots[i].OnDragEvent += OnDragEvent;
+            ItemSlots[i].OnDropEvent += OnDropEvent;
         }
     }
-
-    private void EventHelper(BaseItemSlot itemSlot, Action<BaseItemSlot> action)
+    protected virtual void Start()
     {
-        if (action != null)
-            action(itemSlot);
+        UpdateItemSlots();
     }
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            UnlockSlot++;
+            // for reading in this case it doesn't matter
+            // but for being consequent I would also use the property here
+            Debug.Log(UnlockSlot);
+        }
+    }
+
+    //private void EventHelper(BaseItemSlot itemSlot, Action<BaseItemSlot> action)
+    //{
+    //    if (action != null)
+    //        action(itemSlot);
+    //}
 
     public virtual bool CanAddItem(Item item, int amount = 1)
     {

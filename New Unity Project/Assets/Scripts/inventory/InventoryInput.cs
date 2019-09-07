@@ -9,6 +9,7 @@ public class InventoryInput : MonoBehaviour
 
     public PlayerController player;
 
+
     private void Start()
     {
         shortCutPanelObject.SetActive(true);
@@ -67,5 +68,5 @@ public class InventoryInput : MonoBehaviour
         }
     }
 
-   
+
 }

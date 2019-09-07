@@ -194,21 +194,6 @@ public class InventoryManager : MonoBehaviour
             Inventory.AddItem(item);
         }
     }
-
-
     
-
-    private void FixedUpdate()
-    {
-
-        if (Input.GetKeyUp(KeyCode.M))
-        {
-            if (Inventory.unlockSlot < 6)
-            {
-                Inventory.unlockSlot++;
-                Debug.Log(Inventory.ItemSlots.Count / 5 * Inventory.unlockSlot);
-            }
-        }
-    }
 
 }
