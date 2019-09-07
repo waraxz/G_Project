@@ -7,6 +7,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     public List<ItemSlot> ItemSlots;
 
     public int unlockSlot = 1;
+    public Item item;
 
     public event Action<BaseItemSlot> OnPointerEnterEvent;
     public event Action<BaseItemSlot> OnPointerExitEvent;
@@ -22,9 +23,10 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 
     }
  
-    protected virtual void Start()
+    
+    protected virtual void Awake()
     {
-        for (int i = 0; i < ItemSlots.Count/5; i++)
+        for (int i = 0; i < ItemSlots.Count; i++)
         {
             ItemSlots[i].OnPointerEnterEvent += slot => EventHelper(slot, OnPointerEnterEvent);
             ItemSlots[i].OnPointerExitEvent += slot => EventHelper(slot, OnPointerExitEvent);
@@ -32,6 +34,10 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
             ItemSlots[i].OnBeginDragEvent += slot => EventHelper(slot, OnBeginDragEvent);
             ItemSlots[i].OnEndDragEvent += slot => EventHelper(slot, OnEndDragEvent);
             ItemSlots[i].OnDragEvent += slot => EventHelper(slot, OnDragEvent);
+            
+        }
+        for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
+        {
             ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);
         }
     }
@@ -39,12 +45,6 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     {
         for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
         {
-            ItemSlots[i].OnPointerEnterEvent += slot => EventHelper(slot, OnPointerEnterEvent);
-            ItemSlots[i].OnPointerExitEvent += slot => EventHelper(slot, OnPointerExitEvent);
-            ItemSlots[i].OnRightClickEvent += slot => EventHelper(slot, OnRightClickEvent);
-            ItemSlots[i].OnBeginDragEvent += slot => EventHelper(slot, OnBeginDragEvent);
-            ItemSlots[i].OnEndDragEvent += slot => EventHelper(slot, OnEndDragEvent);
-            ItemSlots[i].OnDragEvent += slot => EventHelper(slot, OnDragEvent);
             ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);
         }
     }
@@ -71,7 +71,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 
     public virtual bool AddItem(Item item)
     {
-        for (int i = 0; i < ItemSlots.Count; i++)
+        for (int i = 0; i < ItemSlots.Count/5 * unlockSlot; i++)
         {
             if (ItemSlots[i].CanAddStack(item))
             {
@@ -82,7 +82,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
             }
         }
 
-        for (int i = 0; i < ItemSlots.Count; i++)
+        for (int i = 0; i < ItemSlots.Count / 5 * unlockSlot; i++)
         {
             if (ItemSlots[i].Item == null)
             {

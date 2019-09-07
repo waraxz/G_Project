@@ -20,8 +20,6 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-
-
         // Setup Events:
         // Right Click
         Inventory.OnRightClickEvent += RightClickorPresstoUse;
@@ -47,26 +45,7 @@ public class InventoryManager : MonoBehaviour
         //dropItemArea.OnDropEvent += DropItemOutsideUI;
     }
 
-    private void Start()
-    {
-        //if (itemSaveManager != null)
-        //{
-        //    itemSaveManager.LoadEquipment(this);
-        //    itemSaveManager.LoadInventory(this);
-        //}
-
-
-    }
-
-    private void OnDestroy()
-    {
-        //if (itemSaveManager != null)
-        //{
-        //    itemSaveManager.SaveEquipment(this);
-        //    itemSaveManager.SaveInventory(this);
-        //}
-    }
-
+    // TKคลิกขวาหรือกด 1-= เพื่อใช้ไอเท็ม
     public void RightClickorPresstoUse(BaseItemSlot itemSlot)
     {
         if (itemSlot.Item is Equippable)
@@ -77,15 +56,17 @@ public class InventoryManager : MonoBehaviour
         {
             UsableItem usableItem = (UsableItem)itemSlot.Item;
             usableItem.Use(playerHP);
-
+            // ถ้าไอเท็ม usableใช้งาน
             if (usableItem.IsConsumable)
             {
+                // ลด amount
                 itemSlot.Amount--;
+                // ถ้าไม่มี amount จะทำลาย
                 usableItem.Destroy();
             }
         }
     }
-
+    // คลิกขวาใน slot ช่อง equip
     private void EquipmentPanelRightClick(BaseItemSlot itemSlot)
     {
         if (itemSlot.Item is Equippable)
@@ -208,59 +189,8 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private ItemContainer openItemContainer;
 
-    private void TransferToItemContainer(BaseItemSlot itemSlot)
-    {
-        Item item = itemSlot.Item;
-        if (item != null && openItemContainer.CanAddItem(item))
-        {
-            Inventory.RemoveItem(item);
-            openItemContainer.AddItem(item);
-        }
-    }
-
-    private void TransferToInventory(BaseItemSlot itemSlot)
-    {
-        Item item = itemSlot.Item;
-        if (item != null && Inventory.AddItem(item))
-        {
-            openItemContainer.RemoveItem(item);
-            Inventory.AddItem(item);
-        }
-    }
-
-    public void OpenItemContainer(ItemContainer itemContainer)
-    {
-        openItemContainer = itemContainer;
-
-        Inventory.OnRightClickEvent -= RightClickorPresstoUse;
-        Inventory.OnRightClickEvent += TransferToItemContainer;
-
-        itemContainer.OnRightClickEvent += TransferToInventory;
-
-
-        itemContainer.OnBeginDragEvent += BeginDrag;
-        itemContainer.OnEndDragEvent += EndDrag;
-        itemContainer.OnDragEvent += Drag;
-        itemContainer.OnDropEvent += Drop;
-    }
-
-    public void CloseItemContainer(ItemContainer itemContainer)
-    {
-        openItemContainer = null;
-
-        Inventory.OnRightClickEvent += RightClickorPresstoUse;
-        Inventory.OnRightClickEvent -= TransferToItemContainer;
-
-        itemContainer.OnRightClickEvent -= TransferToInventory;
-
-
-        itemContainer.OnBeginDragEvent -= BeginDrag;
-        itemContainer.OnEndDragEvent -= EndDrag;
-        itemContainer.OnDragEvent -= Drag;
-        itemContainer.OnDropEvent -= Drop;
-    }
+    
 
     private void FixedUpdate()
     {

@@ -100,7 +100,7 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // เปล่ยนได้ว่าต้องการจะให้คลิกซ้ายหรือขวาหรือตรงกลาง เพื่อทำ....
+        // เปลี่ยนได้ว่าต้องการจะให้คลิกซ้ายหรือขวาหรือตรงกลาง เพื่อทำ....
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
             if (OnRightClickEvent != null)
